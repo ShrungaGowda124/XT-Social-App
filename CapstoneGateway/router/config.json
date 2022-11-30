@@ -1,0 +1,16 @@
+{
+    "api" : [
+        {
+            "path": "/users",
+            "url": "http://user-cluster-srv:3000/"
+        },
+        {
+            "path": "/blogs",
+            "url": "http://blog-cluster-srv:3002/"
+        },
+        {
+            "path": "/comments",
+            "url": "http://comment-cluster-srv:3001/"
+        }
+    ]  
+}

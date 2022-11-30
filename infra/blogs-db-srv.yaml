@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blogs-db-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      containers:
+        - name: capstoneblogdb-container
+          image: rvirish/capstoneblogdb
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blogs-db-cluster-srv
+spec:
+  selector:
+    app: blog
+  ports:
+    - name: blog
+      protocol: TCP
+      port: 3012
+      targetPort: 3012

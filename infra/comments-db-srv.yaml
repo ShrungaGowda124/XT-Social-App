@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments-db-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comment
+  template:
+    metadata:
+      labels:
+        app: comment
+    spec:
+      containers:
+        - name: capstonecommentsdb-container
+          image: rvirish/capstonecommentsdb
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments-db-cluster-srv
+spec:
+  selector:
+    app: comment
+  ports:
+    - name: comment
+      protocol: TCP
+      port: 3013
+      targetPort: 3013

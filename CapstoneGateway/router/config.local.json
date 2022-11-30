@@ -1,0 +1,16 @@
+{
+    "api" : [
+        {
+            "path": "/users",
+            "url": "http://localhost:3000/"
+        },
+        {
+            "path": "/blogs",
+            "url": "http://localhost:3002/"
+        },
+        {
+            "path": "/comments",
+            "url": "http://localhost:3001/"
+        }
+    ]  
+}

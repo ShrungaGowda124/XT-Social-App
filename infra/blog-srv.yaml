@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      containers:
+        - name: capstoneblog-container
+          image: marudhuraj/capstoneblog
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-cluster-srv
+spec:
+  selector:
+    app: blog
+  ports:
+    - name: blog
+      protocol: TCP
+      port: 3002
+      targetPort: 3002
